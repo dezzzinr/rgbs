@@ -1,0 +1,44 @@
+{
+  "name": "relay-global-shipping-next",
+  "version": "1.4.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev --webpack --hostname 0.0.0.0 --port 3000",
+    "build": "next build --webpack",
+    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "db:status": "node scripts/database.mjs status",
+    "db:check": "node scripts/database.mjs check",
+    "db:bootstrap": "node scripts/database.mjs bootstrap",
+    "db:upgrade": "node scripts/database.mjs upgrade",
+    "admin:create": "node scripts/create-admin.mjs",
+    "photos:purge": "node scripts/purge-photos.mjs",
+    "widgets:build": "node scripts/build-widgets.mjs",
+    "predev": "npm run widgets:build",
+    "prebuild": "npm run widgets:build",
+    "test:browser": "playwright test",
+    "format": "prettier --write server scripts app components tests *.mjs proxy.js",
+    "content:build": "node scripts/expand-content.mjs && node scripts/refine-interface.mjs && node scripts/build-services.mjs",
+    "services:build": "node scripts/build-services.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.900.0",
+    "@inquirer/prompts": "^7.8.0",
+    "decimal.js": "^10.6.0",
+    "html-react-parser": "^5.2.0",
+    "next": "16.4.3",
+    "pg": "^8.16.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.13",
+    "@playwright/test": "^1.64.1",
+    "prettier": "^3.9.10"
+  }
+}

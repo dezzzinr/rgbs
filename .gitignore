@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.log
+*.zip
+.vercel/
+checks/
+test-results/
+playwright-report/

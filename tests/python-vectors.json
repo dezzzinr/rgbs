@@ -1,0 +1,12 @@
+{
+  "password": "Existing admin password 2026!",
+  "stored": "0123456789abcdef0123456789abcdef:cbe94609fb67ca1c7c75c902f6b7e74a5ca98ea3affd58b6a17b769ff8a876c0cc7ec397b780a3d6c5820f53a7a5f4ef0e8a53c3ede66a1e74bb829245ff9381",
+  "json": {
+    "note": "Lagos \u2192 \u6771\u4eac \ud83d\ude00",
+    "items": [
+      { "id": "RLY-ABC", "expected_updated_at": "2026-10-29T10:00:00+00:00" }
+    ]
+  },
+  "compact": "{\"items\":[{\"expected_updated_at\":\"2026-10-29T10:00:00+00:00\",\"id\":\"RLY-ABC\"}],\"note\":\"Lagos \\u2192 \\u6771\\u4eac \\ud83d\\ude00\"}",
+  "spaced": "{\"items\": [{\"expected_updated_at\": \"2026-10-29T10:00:00+00:00\", \"id\": \"RLY-ABC\"}], \"note\": \"Lagos \\u2192 \\u6771\\u4eac \\ud83d\\ude00\"}"
+}

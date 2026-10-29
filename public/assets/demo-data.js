@@ -1,0 +1,14 @@
+'use strict';
+(()=>{
+const sample=[
+{id:'RLY-DEMO-20481',recipient:'Amara Johnson',recipient_email:'amara@example.com',origin:'Lagos',origin_country:'Nigeria',destination:'London',destination_country:'United Kingdom',weight:24.5,mode:'air',source:'own_network',status:'in_transit',estimated_delivery:'2026-10-25'},
+{id:'RLY-DEMO-20480',recipient:'Nordic Trade Ltd.',recipient_email:'logistics@example.com',origin:'Shanghai',origin_country:'China',destination:'Rotterdam',destination_country:'Netherlands',weight:12400,mode:'sea',source:'own_network',status:'customs_clearance',estimated_delivery:'2026-11-08'},
+{id:'RLY-DEMO-20479',recipient:'David Okonkwo',recipient_email:'david@example.com',origin:'New York',origin_country:'United States',destination:'Dubai',destination_country:'United Arab Emirates',weight:8.2,mode:'air',source:'partner',carrier:'FedEx',external_tracking:'DEMO-NOT-A-REAL-TRACKING-NUMBER',status:'delivered',estimated_delivery:'2026-10-21'},
+{id:'RLY-DEMO-20478',recipient:'Maison Atelier',recipient_email:'orders@example.com',origin:'Paris',origin_country:'France',destination:'Berlin',destination_country:'Germany',weight:360,mode:'land',source:'own_network',status:'out_for_delivery',estimated_delivery:'2026-10-23'},
+{id:'RLY-DEMO-20477',recipient:'Grace Eze',recipient_email:'grace@example.com',origin:'Singapore',origin_country:'Singapore',destination:'Accra',destination_country:'Ghana',weight:85,mode:'multimodal',source:'own_network',status:'booked',estimated_delivery:'2026-11-02'},
+{id:'RLY-DEMO-20476',recipient:'Atlas Industries',recipient_email:'atlas@example.com',origin:'Hamburg',origin_country:'Germany',destination:'Cape Town',destination_country:'South Africa',weight:8200,mode:'sea',source:'own_network',status:'on_hold',estimated_delivery:null}
+];
+function makeSamples(){const rows=sample.map(s=>({...s,tracking_token:'demo-'+s.id,created_at:'2026-10-20T09:00:00Z',updated_at:'2026-10-22T10:30:00Z',events:[{status:'booked',location:s.origin_country,public_note:'Shipment registered with Relay',created_at:'2026-10-20T09:00:00Z'},...(s.status!=='booked'?[{status:s.status,location:s.status==='delivered'?s.destination_country:s.origin_country,public_note:'Sample tracking milestone — demonstration only',created_at:'2026-10-22T10:30:00Z'}]:[])]}));const s=rows.find(s=>s.id==='RLY-DEMO-20481');Object.assign(s.events[0],{latitude:6.5244,longitude:3.3792,map_public:true,location:'Lagos demo hub'});Object.assign(s.events[1],{latitude:51.5074,longitude:-0.1278,map_public:true,location:'London demo hub'});Object.assign(s,{category:'parcel',route_origin_label:'Lagos demo hub',route_origin_lat:6.5244,route_origin_lon:3.3792,route_destination_label:'London demo hub',route_destination_lat:51.5074,route_destination_lon:-0.1278,route_public:true});return rows}
+
+window.relayDemoSeed=makeSamples;
+})();
